@@ -10,7 +10,8 @@ RUN curl -L -O https://github.com/vzakharchenko/keycloak-radius-plugin/releases/
 FROM quay.io/keycloak/keycloak:26.4.7
 
 # Copia Plugin
-COPY --from=plugins --chown=keycloak:keycloak keycloak-radius-${PLUGIN_VERSION}/providers/tmp/*.jar /opt/keycloak/providers/
+COPY --from=plugins --chown=keycloak:keycloak keycloak-radius-${PLUGIN_VERSION}/providers/*.jar /opt/keycloak/providers/
+RUN ls -l /opt/keycloak/providers/
 
 # Abilitazione Features (Token exchange, etc.)
 ENV KC_FEATURES="token-exchange,admin-fine-grained-authz"
