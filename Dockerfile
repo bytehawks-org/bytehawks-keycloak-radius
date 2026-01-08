@@ -11,7 +11,7 @@ FROM quay.io/keycloak/keycloak:26.4.7
 ARG PLUGIN_VERSION=1.6.1-26.4.0
 
 # Copia Plugin
-COPY --from=plugins --chown=keycloak:keycloak keycloak-radius-${PLUGIN_VERSION}/providers/*.jar /opt/keycloak/providers/
+COPY --from=plugins --chown=keycloak:keycloak /tmp/keycloak-radius-${PLUGIN_VERSION}/providers/*.jar /opt/keycloak/providers/
 RUN ls -l /opt/keycloak/providers/
 
 # Abilitazione Features (Token exchange, etc.)
