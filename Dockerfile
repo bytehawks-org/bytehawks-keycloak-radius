@@ -8,6 +8,7 @@ RUN curl -L -O https://github.com/vzakharchenko/keycloak-radius-plugin/releases/
 
 # Stage 2: Keycloak Build
 FROM quay.io/keycloak/keycloak:26.4.7
+ARG PLUGIN_VERSION=1.6.1-26.4.0
 
 # Copia Plugin
 COPY --from=plugins --chown=keycloak:keycloak keycloak-radius-${PLUGIN_VERSION}/providers/*.jar /opt/keycloak/providers/
